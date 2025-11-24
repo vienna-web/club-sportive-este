@@ -48,13 +48,13 @@ body {
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:40px; /* space between school logo and club logo */
-  flex-wrap:wrap; /* wrap for small screens */
+  gap:40px;
+  flex-wrap:wrap;
 }
 .top-logos img {
   width:120px;
   height:120px;
-  object-fit:contain; /* maintain transparent background */
+  object-fit:contain;
 }
 
 /* =========================
@@ -118,6 +118,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 .member-card h4{margin:0;font-size:18px}
 .member-card p{margin:4px 0 0 0;color:#375b7a;font-size:14px}
 .role{font-weight:600;color:var(--orange)}
+
 /* =========================
    EVENTS SLIDER
    ========================= */
@@ -232,6 +233,35 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 @media(max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.grid.cols-3{grid-template-columns:1fr}.hero{height:180px}}
 @media(max-width:768px){.member-card{flex-direction:column;text-align:center;}.slider-btn{display:none;}}
+
+.site-footer {
+  background: #375b7a;  /* matches your theme blue */
+  color: var(#ffffff);         /* white text (#ffffff) */
+  padding: 24px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 2.0;
+}
+
+.site-footer .footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer a {
+  color:#ffffff;      /* matches your theme orange */
+  text-decoration:firebrick ;
+  margin: 0 6px;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+
 </style>
 </head>
 <body>
@@ -240,9 +270,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
      TOP LOGOS (SCHOOL + CLUB)
      ========================= -->
 <div class="top-logos">
-  <!-- School Logo -->
   <img src="est.png.png" alt="School Logo" />
-  <!-- Club Logo -->
   <img src="club.png" alt="Club Logo" />
 </div>
 
@@ -257,84 +285,12 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 </div>
 
 <!-- =========================
-     ABOUT US
-     ========================= -->
-<h3>About Us</h3>
-<p>We unite student athletes, organise events, and manage university sports facilities. Our mission is to encourage participation and excellence across all sports.</p>
-
-<!-- =========================
-     MEMBERS
-     ========================= -->
-<h3>Organization & Members</h3>
-<div class="grid cols-3">
-  <!-- Example member card -->
-  <div class="member-card">
-    <img src="1.jpg" class="avatar-img" alt="President" />
-    <div>
-      <h4>President — <span class="role">abderahman</span></h4>
-      <p>Oversees club strategy, liaison with school & university.</p>
-    </div>
-
-  </div>
-    <div class="member-card">
-    <img src="2.jpg" class="avatar-img" alt="President" />  
-    <div>
-      <h4>responsable de communication — <span class="role">sara</span></h4>
-      <p>Oversees club strategy, liaison with school & university.</p>
-    </div>
-  </div> 
-  <div class="member-card">
-    <img src="3.jpg" class="avatar-img" alt="Event Manager" />
-    <div>
-      <h4>Event Manager — <span class="role">youssef</span></h4>
-      <p>Plans tournaments, manages schedules and volunteers.</p>
-    </div>
-  </div>
-  <div class="member-card">
-    <img src="4.jpg" class="avatar-img" alt="HR" />
-    <div>
-      <h4>Human Resources — <span class="role">hanane</span></h4>
-      <p>Manages memberships, gear, and resource allocation.</p>
-    </div>
-  </div>
-  <div class="member-card">
-    <img src="5.jpg" class="avatar-img" alt="President" />
-    <div>
-      <h4>finance — <span class="role">achraf</span></h4>
-      <p>Oversees club strategy, liaison with school & university.</p>
-    </div>
-  </div>
-  <div class="member-card">
-    <img src="6.jpg" class="avatar-img" alt="President" />
-    <div>
-      <h4>media Manager — <span class="role">walid</span></h4>
-      <p>Oversees club strategy, liaison with school & university.</p>
-    </div>
-  </div>
-  <div class="member-card">
-    <img src="7.jpg" class="avatar-img" alt="President" />  
-    <div>
-      <h4>photoghraph — <span class="role">aymane</span></h4>
-      <p>Oversees club strategy, liaison with school & university.</p>
-    </div>
-      </div>
-  <div class="member-card">
-    <img src="8.jpg" class="avatar-img" alt="President" />  
-    <div>
-      <h4>organization — <span class="role">ahmed</span></h4>
-      <p>Oversees club strategy, liaison with school & university.</p>
-    </div>
-      </div>
-</div>
-</div>
-<!-- =========================
      EVENTS
      ========================= -->
 <h3>Upcoming Events</h3>
 <div id="event-slider">
   <div id="event-track">
-    <!-- Example event card -->
-    <!-- To add a new event, copy this div and update the data-date and details -->
+    <!-- Event Card 1 -->
     <div class="event-card" data-date="2025-05-10">
       <img src="images/event1.jpg" alt="Event 1" />
       <h4>Event Name 1</h4>
@@ -344,40 +300,137 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
       <button class="open-modal" data-target="modal1">Details</button>
       <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
     </div>
-        <div class="event-card" data-date="2025-05-10">
-      <img src="images/event1.jpg" alt="Event 2" />
-      <h4>Event Name 1</h4>
-      <p><strong>Date:</strong> 10 May 2025</p>
-      <p><strong>Time:</strong> 14:00</p>
-      <p><strong>Place:</strong> Football Field</p>
+
+    <!-- Event Card 2 -->
+    <div class="event-card" data-date="2025-05-12">
+      <img src="images/event2.jpg" alt="Event 2" />
+      <h4>Event Name 2</h4>
+      <p><strong>Date:</strong> 12 May 2025</p>
+      <p><strong>Time:</strong> 16:00</p>
+      <p><strong>Place:</strong> Basketball Court</p>
       <button class="open-modal" data-target="modal2">Details</button>
       <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
     </div>
-        <div class="event-card" data-date="2025-05-10">
-      <img src="images/event1.jpg" alt="Event 3" />
-      <h4>Event Name 1</h4>
-      <p><strong>Date:</strong> 10 May 2025</p>
-      <p><strong>Time:</strong> 14:00</p>
-      <p><strong>Place:</strong> Football Field</p>
+
+    <!-- Event Card 3 -->
+    <div class="event-card" data-date="2025-05-15">
+      <img src="images/event3.jpg" alt="Event 3" />
+      <h4>Event Name 3</h4>
+      <p><strong>Date:</strong> 15 May 2025</p>
+      <p><strong>Time:</strong> 18:00</p>
+      <p><strong>Place:</strong> Volleyball Court</p>
       <button class="open-modal" data-target="modal3">Details</button>
       <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
     </div>
-        <div class="event-card" data-date="2025-05-10">
-      <img src="images/event1.jpg" alt="Event 4" />
-      <h4>Event Name 1</h4>
-      <p><strong>Date:</strong> 10 May 2025</p>
-      <p><strong>Time:</strong> 14:00</p>
-      <p><strong>Place:</strong> Football Field</p>
-      <button class="open-modal" data-target="modal4">Details</button>
-      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
-    </div>
+
+    <!-- Add more cards here -->
   </div>
-    <button id="slide-left" class="slider-btn">❮</button>
-    <button id="slide-right" class="slider-btn">❯</button>
+
+  <!-- Slider Buttons -->
+  <button id="slide-left" class="slider-btn">❮</button>
+  <button id="slide-right" class="slider-btn">❯</button>
+</div>
+<!-- =========================
+     RESERVATIONS
+     ========================= -->
+<h3>reservation terrain de foot ⚽</h3>
+<div class="reserve">
+  <p>To reserve the football field, please fill the form below.</p>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZI6DSYPYKR8F9ZhJp780vK6P1gpimjtd4LZiL73lcO5UWng/viewform?usp=header"></iframe>
+</div>
+
+<h3>reservation terrain basket 🏀</h3>
+<div class="reserve">
+  <p>To reserve the basketball court, please fill the form below.</p>
+  <iframe src="https://docs.google.com/forms/d/e/YOUR_BASKETBALL_FORM_EMBED_URL/viewform?embedded=true"></iframe>
+</div>
+
+<h3>reservation terrain volleyball 🏐</h3>
+<div class="reserve">
+  <p>To reserve the volleyball court, please fill the form below.</p>
+  <iframe src="https://docs.google.com/forms/d/e/YOUR_VOLLEYBALL_FORM_EMBED_URL/viewform?embedded=true"></iframe>
 </div>
 
 <!-- =========================
-     MODALS
+     MEMBERS
+     ========================= -->
+<h3>Organization & Members</h3>
+<div class="grid cols-3">
+  <!-- Member 1 -->
+  <div class="member-card">
+    <img src="1.jpg" class="avatar-img" alt="President" />
+    <div>
+      <h4>President — <span class="role">abderahman</span></h4>
+      <p>Dirige la stratégie générale du club et assure la liaison avec l’école et l’université.</p>
+    </div>
+  </div>
+
+  <!-- Member 2 -->
+  <div class="member-card">
+    <img src="2.jpg" class="avatar-img" alt="Communication Head" />
+    <div>
+      <h4>Responsable de communication — <span class="role">sara</span></h4>
+      <p>Gère la communication interne et externe du club, crée les annonces et maintient l’image du club.</p>
+    </div>
+  </div>
+
+  <!-- Member 3 -->
+  <div class="member-card">
+    <img src="3.jpg" class="avatar-img" alt="Event Manager" />
+    <div>
+      <h4>Event Manager — <span class="role">youssef</span></h4>
+      <p>Planifie les événements sportifs, organise les tournois et coordonne les bénévoles.</p>
+    </div>
+  </div>
+
+  <!-- Member 4 -->
+  <div class="member-card">
+    <img src="4.jpg" class="avatar-img" alt="HR" />
+    <div>
+      <h4>Human Resources — <span class="role">hanane</span></h4>
+      <p>Gère les adhésions, les besoins des membres et la répartition du matériel.</p>
+    </div>
+  </div>
+
+  <!-- Member 5 -->
+  <div class="member-card">
+    <img src="5.jpg" class="avatar-img" alt="Finance" />
+    <div>
+      <h4>Finance — <span class="role">achraf</span></h4>
+      <p>Supervise le budget du club, assure la gestion des dépenses et veille à la bonne utilisation des ressources.</p>
+    </div>
+  </div>
+
+  <!-- Member 6 -->
+  <div class="member-card">
+    <img src="6.jpg" class="avatar-img" alt="Finance" />
+    <div>
+      <h4>media manager— <span class="role">walid</span></h4>
+      <p>S’occupe du contenu photo/vidéo et gère les publications sur les réseaux sociaux du club.</p>
+    </div>
+  </div> 
+
+  <!-- Member 7 -->
+  <div class="member-card">
+    <img src="7.jpg" class="avatar-img" alt="Finance" />
+    <div>
+      <h4>Responsable Photo & Web — <span class="role">aymane</span></h4>
+      <p>Assure la couverture photo des activités du club et gère la création, la mise à jour et la qualité du site web.</p>
+    </div>
+  </div> 
+
+  <!-- Member 8 -->
+  <div class="member-card">
+    <img src="8.jpg" class="avatar-img" alt="Finance" />
+    <div>
+      <h4>organization — <span class="role">ahmed</span></h4>
+      <p>Organise la logistique des activités, gère l’équipe sur le terrain et veille au bon déroulement des événements.</p>
+    </div>
+  </div> 
+
+
+<!-- =========================
+     FOOTER
      ========================= -->
 <div id="modal1" class="modal">
   <div class="modal-content">
@@ -386,17 +439,23 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
     <button class="close-modal">Close</button>
   </div>
 </div>
-
-<!-- =========================
-     FOOTBALL FIELD RESERVATION
-     ========================= -->
-<h3>Football Field Reservation</h3>
-<div class="reserve">
-  <p>To reserve the football field, please fill the form below.</p>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZI6DSYPYKR8F9ZhJp780vK6P1gpimjtd4LZiL73lcO5UWng/viewform?usp=header"></iframe>
-</div>
-
 </main>
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>&copy; 2025 Este Essaouira Sports Club. Tous droits réservés.</p>
+    <p>
+      Contact : 
+      <a href="mailto:info@esteclub.com">info@esteclub.com</a> | 
+      <a href="https://instagram.com/club_sportifeste" target="_blank">Instagram</a> | 
+      <a href="tel:+212600000000">+212 600 000 000</a>
+    </p>
+    <p>Rejoignez-nous et suivez nos activités sportives !</p>
+  </div>
+</footer>
+
 
 <script>
 /* =========================
@@ -440,7 +499,7 @@ function markPastEvents(){
   const today=new Date();
   document.querySelectorAll('.event-card').forEach(card=>{
     const eventDate=new Date(card.dataset.date);
-    eventDate.setDate(eventDate.getDate()+1); // mark ended day after event
+    eventDate.setDate(eventDate.getDate()+1);
     if(today>=eventDate){
       if(!card.querySelector('.status')){
         const status=document.createElement('div');
@@ -452,9 +511,9 @@ function markPastEvents(){
   });
 }
 markPastEvents();
-setInterval(markPastEvents,60*1000); // check every minute
-
+setInterval(markPastEvents,60*1000);
 </script>
 
 </body>
 </html>
+
