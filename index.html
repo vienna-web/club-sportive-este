@@ -181,6 +181,83 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 #slide-right{right:0;}
 
 /* =========================
+   AI WEBSITE LINK SECTION
+   ========================= */
+.ai-site-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    120deg,
+    rgba(11,99,167,0.08),
+    rgba(255,122,45,0.08)
+  );
+}
+
+.ai-site-box {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 36px 28px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  animation: fadeUp 0.8s ease;
+}
+
+.ai-site-logos {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.ai-site-logos img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.ai-site-box h2 {
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.ai-site-box p {
+  color: #375b7a;
+  font-size: 15px;
+  margin-bottom: 26px;
+}
+
+.ai-site-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ai-site-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Entrance Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
    MODAL
    ========================= */
 .modal{
@@ -384,6 +461,31 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   <button id="slide-left" class="slider-btn">❮</button>
   <button id="slide-right" class="slider-btn">❯</button>
 </div>
+
+<!-- =========================
+     AI FITNESS WEBSITE LINK
+     ========================= -->
+<section class="ai-site-section">
+  <div class="ai-site-box">
+
+    <div class="ai-site-logos">
+      <img src="est.png.png" alt="School Logo">
+      <img src="club.png" alt="Club Logo">
+    </div>
+
+    <h2>AI Fitness & Performance Analyzer</h2>
+    <p>
+      Analysez votre condition physique, votre masse musculaire et vos performances
+      sportives grâce à notre nouvelle plateforme intelligente.
+    </p>
+
+    <a href="https://vienna-web.github.io/health/" class="ai-site-btn" target="_blank">
+      Accéder au site intelligent →
+    </a>
+
+  </div>
+</section>
+
 <!-- =========================
      RESERVATIONS
      ========================= -->
