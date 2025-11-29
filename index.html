@@ -163,22 +163,36 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   background:var(--orange);
 }
 
-/* =========================
-   SLIDER BUTTONS
-   ========================= */
-.slider-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:var(--blue);
-  color:white;
-  border:none;
-  padding:10px;
-  border-radius:6px;
-  cursor:pointer;
+.slider-btn {
+  position: absolute;
+  top: 45%;                       /* slightly above vertical center */
+  transform: translateY(-50%);
+  background: var(--blue);         /* solid theme color */
+  color: #fff;
+  border: none;
+  padding: 10px 16px;             /* rectangular shape */
+  border-radius: 6px;             /* slight rounding */
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+  transition: background 0.25s, transform 0.25s;
 }
-#slide-left{left:0;}
-#slide-right{right:0;}
+
+.slider-btn:hover {
+  background: var(--blue);
+  transform: translateY(-50%) scale(1.1); /* slight grow effect on hover */
+}
+
+/* Position Left and Right (slightly higher) */
+#slide-left { top: 43%; left: 8px; }
+#slide-right { top: 43%; right: 8px; }
+
+
+/* Hide on small screens */
+@media(max-width: 768px){
+  .slider-btn { display: none; }
+}
+
 
 /* =========================
    AI WEBSITE LINK SECTION
@@ -304,6 +318,35 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   filter:brightness(0.97);
 }
 
+.reserve-status {
+  display: grid;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+/* =========================
+   status-card remove ofter terains are dispo
+   ========================= */
+
+.status-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+  text-align: left;
+}
+
+.status-card h4 {
+  margin: 0 0 8px 0;
+  color: var(--blue);
+}
+
+.status-card p {
+  margin: 4px 0;
+  color: #375b7a;
+}
+
+
 /* =========================
    RESPONSIVE
    ========================= */
@@ -378,7 +421,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
     <!-- Event Card 1 -->
     <div class="event-card" data-date="2025-05-10">
       <img src="images/event1.jpg" alt="Event 1" />
-      <h4>Event Name 1</h4>
+      <h4>pas d'événement</h4>
       <p><strong>Date:</strong> 10 May 2025</p>
       <p><strong>Time:</strong> 14:00</p>
       <p><strong>Place:</strong> Football Field</p>
@@ -389,7 +432,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
     <!-- Event Card 2 -->
     <div class="event-card" data-date="2025-05-12">
       <img src="images/event2.jpg" alt="Event 2" />
-      <h4>Event Name 2</h4>
+      <h4>pas d'événement</h4>
       <p><strong>Date:</strong> 12 May 2025</p>
       <p><strong>Time:</strong> 16:00</p>
       <p><strong>Place:</strong> Basketball Court</p>
@@ -400,7 +443,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
     <!-- Event Card 3 -->
     <div class="event-card" data-date="2026-05-15">
       <img src="images/event3.jpg" alt="Event 3" />
-      <h4>Event Name 3</h4>
+      <h4>pas d'événement</h4>
       <p><strong>Date:</strong> 15 May 2025</p>
       <p><strong>Time:</strong> 18:00</p>
       <p><strong>Place:</strong> Volleyball Court</p>
@@ -411,7 +454,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
     <!-- Event Card 4 -->
     <div class="event-card" data-date="2026-05-15">
       <img src="images/event4.jpg" alt="Event 4" />
-      <h4>Event Name 3</h4>
+      <h4>pas d'événement</h4>
       <p><strong>Date:</strong> 15 May 2025</p>
       <p><strong>Time:</strong> 18:00</p>
       <p><strong>Place:</strong> Volleyball Court</p>
@@ -423,7 +466,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   </div>
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h3>Event title for event 1  — Details</h3>
+    <h3>pas d'événement  — Details</h3>
     <p>event discription will be here event 1.</p>
     <button class="close-modal">Close</button>
   </div>
@@ -431,7 +474,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h3>event title for event 2 — Details</h3>
+    <h3>pas d'événement  — Details</h3>
     <p>event  discription will be here event 2.</p>
     <button class="close-modal">Close</button>
   </div>
@@ -439,7 +482,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 
 <div id="modal3" class="modal">
   <div class="modal-content">
-    <h3>event title for event 3 — Details</h3>
+    <h3>pas d'événement — Details</h3>
     <p>event  discription will be here event 3.</p>
     <button class="close-modal">Close</button>
   </div>
@@ -448,7 +491,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   </div>
 <div id="modal4" class="modal">
   <div class="modal-content">
-    <h3>event titile event 4 — Details</h3>
+    <h3>pas d'événements — Details</h3>
     <p>event discription will be here event 1.</p>
     <button class="close-modal">Close</button>
   </div>
@@ -473,13 +516,13 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
       <img src="club.png" alt="Club Logo">
     </div>
 
-    <h2>AI Fitness & Performance Analyzer</h2>
+    <h2> Fitness & Performance Analyzer</h2>
     <p>
       Analysez votre condition physique, votre masse musculaire et vos performances
       sportives grâce à notre nouvelle plateforme intelligente.
     </p>
 
-    <a href="https://vienna-web.github.io/health/" class="ai-site-btn" target="_blank">
+    <a href=" https://vienna-web.github.io/health/" class="ai-site-btn" target="_blank">
       Accéder au site intelligent →
     </a>
 
@@ -489,12 +532,35 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 <!-- =========================
      RESERVATIONS
      ========================= -->
+
+     
 <h3>reservation terrain de foot ⚽</h3>
 <div class="reserve">
   <p>To reserve the football field, please fill the form below.</p>
   <iframe src="https://calendar.app.google/hKMrFjJmRrgZRji56"></iframe>
 </div>
 
+<h3>Reservation Status</h3>
+<div class="reserve-status">
+  <div class="status-card">
+    <h4>Football Field ⚽</h4>
+    <p>Status: <strong>Available</strong></p>
+  </div>
+
+  <div class="status-card">
+    <h4>Basketball Court 🏀</h4>
+    <p>Status: <strong>Not available</strong></p>
+    <p>Expected availability: TBD</p>
+  </div>
+
+  <div class="status-card">
+    <h4>Volleyball Court 🏐</h4>
+    <p>Status: <strong>Not available</strong></p>
+    <p>Expected availability: TBD</p>
+  </div>
+</div>
+
+<!--
 <h3> 🏀 </h3>
 <div class="reserve">
   <p>la reservation de terrain de basket et non disponible pour le moment.</p>
@@ -506,7 +572,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   <p> la reservaation du terrain de basket et non disponible pour le moment .</p>
   <iframe src="link here"></iframe>
 </div>
-
+-->
 <!-- =========================
      MEMBERS
      ========================= -->
