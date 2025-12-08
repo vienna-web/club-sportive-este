@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
 <title>Este Essaouira Sports Club</title>
 
 <style>
@@ -12,11 +12,13 @@
 :root {
   --blue:#0b63a7;
   --orange:#ff7a2d;
+  --dark-blue:#062036;
   --bg:#ffffff;
   --text:#062036;
   --card-bg:#f3f3f3;
   --card-shadow:0 6px 18px rgba(11,99,167,0.12);
-  font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+  --card-shadow-hover:0 12px 28px rgba(11,99,167,0.18);
+  font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
 }
 
 /* Dark mode */
@@ -33,44 +35,75 @@
    ========================= */
 body {
   margin:0;
+  padding:0;
   background: var(--bg);
   color: var(--text);
   transition: background 0.3s, color 0.3s;
   text-align:center;
   font-size:16px;
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* Disable zoom gestures */
+* {
+  touch-action: pan-x pan-y;
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* =========================
-   TOP LOGOS
+   TOP LOGOS SECTION
    ========================= */
-.top-logo1 {
-  margin:20px 0;
-  display:flex;
-  justify-content:center;
+.top-logos-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap:30px;
-  flex-wrap:wrap;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, rgba(11,99,167,0.05), rgba(255,122,45,0.05));
+  gap: 20px;
+  flex-wrap: wrap;
 }
-.top-logo1 img:first-child {
-  width: 220px;
-  height: 220px;
-  object-fit:contain;
+
+.top-logo1, .top-logo2 {
+  flex: 1;
+  min-width: 100px;
+  max-width: 100px;
 }
-.top-logo1 img:last-child {
-  width:100px;
-  height:100px;
-  object-fit:contain;
+
+.top-logo1 {
+  max-width: 200px;
 }
-.top-logo2 {
-  display:none;
+
+.top-logo1 img, .top-logo2 img {
+  width: 100%;
+  height: auto;
+  max-width: 100px;
+  object-fit: contain;
+  transition: transform 0.15s ease;
+}
+
+.top-logo1 img {
+  max-width: 190px;
+}
+
+.top-logo1:hover img, .top-logo2:hover img {
+  transform: scale(1.05);
 }
 
 /* =========================
    HERO SECTION
    ========================= */
-.hero{
-  height:280px;
-  border-radius:10px;
+.hero {
+  height:380px;
   position:relative;
   overflow:hidden;
   display:flex;
@@ -79,134 +112,195 @@ body {
   color:#fff;
   background-size:cover;
   background-position:center;
-  margin-bottom:28px;
+  margin-bottom:30px;
+  border-radius:0;
 }
-.hero.bg-local{background-image:url('este.jpg');}
-.hero .overlay{
+
+.hero.bg-local {
+  background-image:url('este.jpg');
+}
+
+.hero .overlay {
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg,rgba(11,99,167,0.5),rgba(255,122,45,0.25));
+  background:linear-gradient(135deg, rgba(11,99,167,0.7), rgba(255,122,45,0.5));
 }
-.hero h1{
+
+.hero-content {
   position:relative;
   z-index:2;
-  font-size:32px;
-  margin:0;
   text-align:center;
+}
+
+.hero h1 {
+  font-size:44px;
+  margin:0 0 8px 0;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:700;
+  text-shadow:2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero p {
+  font-size:15px;
+  margin:0;
+  color:rgba(255,255,255,0.95);
+  text-shadow:1px 1px 4px rgba(0,0,0,0.3);
 }
 
 /* =========================
    SECTION HEADINGS
    ========================= */
-h3{margin-top:18px;color:var(--blue);}
-p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
+h2 {
+  font-size:30px;
+  color:var(--blue);
+  margin:24px 0 16px 0;
+  text-align:left;
+  font-weight:700;
+  border-bottom:3px solid var(--orange);
+  padding-bottom:10px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
-/* =========================
-   MEMBERS GRID
-   ========================= */
-.grid{display:grid;gap:20px;margin-top:10px;}
-.grid.cols-3{grid-template-columns:repeat(3,1fr)}
-.member-card{
-  background:var(--card-bg);
-  border-radius:12px;
-  padding:16px;
-  display:flex;
-  gap:16px;
-  align-items:center;
-  box-shadow:var(--card-shadow);
-  transition:transform .25s;
+h3 {
+  margin-top:16px;
+  margin-bottom: 12px;
+  color:var(--blue);
+  font-size:22px;
+  font-weight:600;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.member-card:hover{transform:translateY(-4px);}
-.avatar-img{
-  width:100px;
-  height:100px;
-  border-radius:12px;
-  object-fit:cover;
+
+p {
+  color:#375b7a;
+  line-height:1.6;
 }
-.member-card h4{margin:0;font-size:18px}
-.member-card p{margin:4px 0 0 0;color:#375b7a;font-size:14px}
-.role{font-weight:600;color:var(--orange)}
 
 /* =========================
    EVENTS SLIDER
    ========================= */
-#event-slider{position:relative;overflow:hidden;margin-top:12px;}
-#event-track{display:flex;gap:16px;transition:transform .45s ease;}
-.event-card{
-  min-width:300px;
-  flex-direction:column;
-  align-items:flex-start;
-  background:var(--card-bg);
-  border-radius:10px;
-  box-shadow:var(--card-shadow);
-  padding:12px;
-  position:relative;
-}
-.event-card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:8px;
-}
-.event-card button, .event-card a{
-  margin-top:6px;
-  border:none;
-  border-radius:6px;
-  padding:8px 12px;
-  cursor:pointer;
-  font-weight:600;
-  text-decoration:none;
-  display:inline-block;
-}
-.event-card button{background:var(--blue);color:#fff;}
-.event-card a{background:var(--orange);color:#fff;}
-.event-card .status{
-  position:absolute;
-  top:12px;
-  right:12px;
-  padding:4px 8px;
-  border-radius:6px;
-  font-weight:600;
-  color:white;
-  background:var(--orange);
+#event-slider {
+  position: relative;
+  overflow: hidden;
+  margin-top: 6px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  padding-bottom: 16px;
 }
 
-.slider-btn {
-  position: absolute;
-  top: 45%;                       /* slightly above vertical center */
-  transform: translateY(-50%);
-  background: var(--blue);         /* solid theme color */
-  color: #fff;
+#event-track {
+  display: flex;
+  gap: 0;
+  transition: transform 0.4s ease;
+  padding: 0;
+  scroll-snap-type: x mandatory;
+}
+
+.event-card {
+  min-width: calc(100% - 14px);
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .event-card img {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+.event-card h4 {
+  font-size: 15px;
+  margin: 3px 0;
+  color: var(--blue);
+}
+
+.event-card p {
+  font-size: 12px;
+  margin: 2px 0;
+  color: #375b7a;
+}
+
+.event-card button, .event-card a {
+  margin-top: 4px;
+  margin-right: 4px;
   border: none;
-  padding: 10px 16px;             /* rectangular shape */
-  border-radius: 6px;             /* slight rounding */
+  border-radius: 4px;
+  padding: 6px 10px;
   cursor: pointer;
-  font-size: 20px;
-  z-index: 10;
-  transition: background 0.25s, transform 0.25s;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.15s ease;
+  font-size: 12px;
 }
 
-.slider-btn:hover {
+.event-card button {
   background: var(--blue);
-  transform: translateY(-50%) scale(1.1); /* slight grow effect on hover */
+  color: #fff;
 }
 
-/* Position Left and Right (slightly higher) */
-#slide-left { top: 55%; left: 8px; }
-#slide-right { top: 55%; right: 8px; }
-
-
-/* Hide on small screens */
-@media(max-width: 768px){
-  .slider-btn { display: none; }
+.event-card button:hover {
+  opacity: 0.9;
 }
 
+.event-card a {
+  background: var(--orange);
+  color: #fff;
+}
+
+.event-card a:hover {
+  opacity: 0.9;
+}
+
+.event-card .status {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 10px;
+  color: white;
+  background: var(--orange);
+  text-transform: uppercase;
+}
 
 /* =========================
    AI WEBSITE LINK SECTION
    ========================= */
 .ai-site-section {
-  padding: 60px 20px;
+  padding: 40px 20px;
   display: flex;
   justify-content: center;
   background: linear-gradient(
@@ -214,24 +308,57 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
     rgba(11,99,167,0.08),
     rgba(255,122,45,0.08)
   );
+  margin-top: 30px;
 }
 
 .ai-site-box {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 36px 28px;
-  max-width: 700px;
+  padding: 30px 24px;
+  max-width: 650px;
   width: 100%;
   text-align: center;
-  box-shadow: var(--card-shadow);
-  animation: fadeUp 0.8s ease;
+  background-image: url('analy.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ai-site-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+.ai-site-box > * {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.ai-site-box h2 {
+  color: white;
+  margin-bottom: 8px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ai-site-box p {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .ai-site-logos {
   display: flex;
   justify-content: center;
   gap: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .ai-site-logos img {
@@ -242,137 +369,214 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 
 .ai-site-box h2 {
   color: var(--blue);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .ai-site-box p {
   color: #375b7a;
-  font-size: 15px;
-  margin-bottom: 26px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .ai-site-btn {
   display: inline-block;
   background: var(--orange);
   color: white;
-  padding: 12px 26px;
-  border-radius: 8px;
+  padding: 10px 24px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.ai-site-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-/* Entrance Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  transition: opacity 0.15s ease;
 }
 
 /* =========================
    MODAL
    ========================= */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.55);
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
-.modal-content{
-  background:var(--card-bg);
-  padding:24px;
-  border-radius:12px;
-  max-width:420px;
-  position:relative;
-}
-.modal-content button{
-  margin-top:12px;
-  background:var(--orange);
-  color:white;
-  border:none;
-  padding:8px 12px;
-  border-radius:6px;
-  cursor:pointer;
+
+.modal-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 380px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 
 /* =========================
    RESERVATION
    ========================= */
-.reserve{
-  padding:16px;
-  border-radius:12px;
-  background:linear-gradient(180deg,#ffffff,#f7fbff);
-  border:1px solid #e6f0fb;
-  margin-top:8px;
+.reserve {
+  padding: 16px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  border: 1px solid #e6f0fb;
+  margin-top: 8px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.reserve iframe{
-  width:100%;
-  height:480px;
-  border:0;
-  border-radius:8px;
-  filter:brightness(0.97);
+
+.reserve p {
+  text-align: left;
+  margin: 0 0 10px 0;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.reserve iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 6px;
+  filter: brightness(0.97);
 }
 
 .reserve-status {
   display: grid;
-  gap: 16px;
+  gap: 10px;
   margin-top: 12px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 /* =========================
-   status-card remove ofter terains are dispo
+   STATUS CARDS
    ========================= */
-
 .status-card {
   background: var(--card-bg);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 8px;
+  padding: 12px;
   box-shadow: var(--card-shadow);
   text-align: left;
+  transition: box-shadow 0.15s ease;
+  border-left: 3px solid var(--orange);
+}
+
+.status-card:hover {
+  box-shadow: var(--card-shadow-hover);
 }
 
 .status-card h4 {
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   color: var(--blue);
+  font-size: 14px;
 }
 
 .status-card p {
-  margin: 4px 0;
+  margin: 2px 0;
   color: #375b7a;
+  font-size: 12px;
+}
+
+.status-card strong {
+  color: var(--blue);
+  font-weight: 600;
 }
 
 
 /* =========================
    RESPONSIVE
    ========================= */
-@media(max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.grid.cols-3{grid-template-columns:1fr}.hero{height:180px}}
-@media(max-width:768px){.member-card{flex-direction:column;text-align:center;}.slider-btn{display:none;}}
+@media(max-width:900px) {
+  .grid.cols-3 {
+    grid-template-columns: repeat(2,1fr);
+  }
+  h2, h3 {
+    font-size: 24px;
+  }
+  .top-logos-container {
+    padding: 15px 20px;
+    gap: 15px;
+  }
+}
+
+@media(max-width:600px) {
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    height: 320px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    letter-spacing: 1px;
+  }
+  .hero p {
+    font-size: 16px;
+  }
+  .top-logos-container {
+    padding: 12px 16px;
+  }
+  .top-logo1 {
+    max-width: 170px;
+  }
+  .top-logo1 img {
+    max-width: 160px;
+  }
+  .top-logo2 {
+    max-width: 100px;
+  }
+  .event-card {
+    min-width: 100%;
+  }
+  .reserve iframe {
+    height: 350px;
+  }
+  #event-slider {
+    padding: 0 10px;
+  }
+  .reserve-status {
+    grid-template-columns: 1fr;
+  }
+  .ai-site-box {
+    padding: 32px 20px;
+  }
+  .ai-site-logos {
+    gap: 20px;
+  }
+  .ai-site-logos img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media(max-width:768px) {
+  .member-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .slider-btn {
+    display: none;
+  }
+}
 
 /* =========================
    FOOTER
 ========================= */
 .site-footer {
-  background: var(rgba(11,99,167,0.5),rgba(255,122,45,0.25));       /* matches your theme blue */
-  color: #ffffff;                /* white text for good contrast */
-  padding: 30px 16px;
-  font-size: 14px;
+  background: linear-gradient(135deg, rgba(11,99,167,0.6), rgba(255,122,45,0.3));
+  color: #ffffff;
+  padding: 24px 16px;
+  font-size: 12px;
   text-align: center;
-  line-height: 1.6;
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.05);
+  line-height: 1.5;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.1);
+  margin-top: 30px;
 }
 
 .site-footer .footer-content {
@@ -380,21 +584,49 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
   margin: 0 auto;
 }
 
+.site-footer p {
+  margin: 6px 0;
+  color: rgba(255,255,255,0.95);
+}
+
 .site-footer a {
-  color: var(--text);          /* theme accent color */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  margin: 0 5px;
+  margin: 0 3px;
+  transition: opacity 0.15s ease;
 }
 
 .site-footer a:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
-/* Optional: small responsiveness tweak */
-@media(max-width:600px){
-  .site-footer { font-size: 13px; }
-  .site-footer p { margin: 8px 0; }
+@media(max-width:600px) {
+  .site-footer {
+    font-size: 11px;
+    padding: 18px 12px;
+  }
+  .site-footer p {
+    margin: 4px 0;
+  }
+  .hero {
+    height: 280px;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .hero p {
+    font-size: 13px;
+  }
+  .event-card {
+    min-width: 100%;
+  }
+  .reserve iframe {
+    height: 240px;
+  }
+  .reserve-status {
+    grid-template-columns: 1fr;
+  }
 }
 
 
@@ -405,9 +637,13 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 <!-- =========================
      TOP LOGOS (SCHOOL + CLUB)
      ========================= -->
-<div class="top-logo1">
-  <img src="est.png.png" alt="School Logo" />
-  <img src="club.png" alt="Club Logo" />
+<div class="top-logos-container">
+  <div class="top-logo1">
+    <img src="est.png.png" alt="School Logo" />
+  </div>
+  <div class="top-logo2"> 
+    <img src="club.png" alt="Club Logo" />
+  </div>
 </div>
 
 <main>
@@ -423,94 +659,91 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 <!-- =========================
      EVENTS
      ========================= -->
-<h3>Upcoming Events</h3>
+<h3>Événements à venir</h3>
 <div id="event-slider">
   <div id="event-track">
     <!-- Event Card 1 -->
     <div class="event-card" data-date="2025-05-10">
-      <img src="images/event1.jpg" alt="Event 1" />
+      <img src="event1.jpeg" alt="Event 1" />
       <h4>pas d'événement</h4>
-      <p><strong>Date:</strong> 10 May 2025</p>
-      <p><strong>Time:</strong> 14:00</p>
-      <p><strong>Place:</strong> Football Field</p>
-      <button class="open-modal" data-target="modal1">Details</button>
-      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
+      <p><strong>Date :</strong> 10 Mai 2025</p>
+      <p><strong>Heure :</strong> 14:00</p>
+      <p><strong>Lieu :</strong> Terrain de Football</p>
+      <button class="open-modal" data-target="modal1">Détails</button>
+      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">S'inscrire</a>
     </div>
 
     <!-- Event Card 2 -->
     <div class="event-card" data-date="2025-05-12">
       <img src="images/event2.jpg" alt="Event 2" />
       <h4>pas d'événement</h4>
-      <p><strong>Date:</strong> 12 May 2025</p>
-      <p><strong>Time:</strong> 16:00</p>
-      <p><strong>Place:</strong> Basketball Court</p>
-      <button class="open-modal" data-target="modal2">Details</button>
-      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
+      <p><strong>Date :</strong> 12 Mai 2025</p>
+      <p><strong>Heure :</strong> 16:00</p>
+      <p><strong>Lieu :</strong> Terrain de Basketball</p>
+      <button class="open-modal" data-target="modal2">Détails</button>
+      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">S'inscrire</a>
     </div>
 
     <!-- Event Card 3 -->
     <div class="event-card" data-date="2026-05-15">
       <img src="images/event3.jpg" alt="Event 3" />
       <h4>pas d'événement</h4>
-      <p><strong>Date:</strong> 15 May 2025</p>
-      <p><strong>Time:</strong> 18:00</p>
-      <p><strong>Place:</strong> Volleyball Court</p>
-      <button class="open-modal" data-target="modal3">Details</button>
-      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
+      <p><strong>Date :</strong> 15 Mai 2025</p>
+      <p><strong>Heure :</strong> 18:00</p>
+      <p><strong>Lieu :</strong> Terrain de Volleyball</p>
+      <button class="open-modal" data-target="modal3">Détails</button>
+      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">S'inscrire</a>
     </div>
 
     <!-- Event Card 4 -->
     <div class="event-card" data-date="2026-05-15">
       <img src="images/event4.jpg" alt="Event 4" />
       <h4>pas d'événement</h4>
-      <p><strong>Date:</strong> 15 May 2025</p>
-      <p><strong>Time:</strong> 18:00</p>
-      <p><strong>Place:</strong> Volleyball Court</p>
-      <button class="open-modal" data-target="modal4">Details</button>
-      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">Register</a>
+      <p><strong>Date :</strong> 15 Mai 2025</p>
+      <p><strong>Heure :</strong> 18:00</p>
+      <p><strong>Lieu :</strong> Terrain de Volleyball</p>
+      <button class="open-modal" data-target="modal4">Détails</button>
+      <a href="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform" target="_blank">S'inscrire</a>
     </div>
 
     <!-- Add more cards here -->
   </div>
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h3>pas d'événement  — Details</h3>
-    <p>event discription will be here event 1.</p>
-    <button class="close-modal">Close</button>
+    <h3>pas d'événement  — Détails</h3>
+    <p>La description de l'événement 1 sera ici.</p>
+    <button class="close-modal">Fermer</button>
   </div>
 </div>
 
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h3>pas d'événement  — Details</h3>
-    <p>event  discription will be here event 2.</p>
-    <button class="close-modal">Close</button>
+    <h3>pas d'événement  — Détails</h3>
+    <p>La description de l'événement 2 sera ici.</p>
+    <button class="close-modal">Fermer</button>
   </div>
 </div>
 
 <div id="modal3" class="modal">
   <div class="modal-content">
-    <h3>pas d'événement — Details</h3>
-    <p>event  discription will be here event 3.</p>
-    <button class="close-modal">Close</button>
+    <h3>pas d'événement — Détails</h3>
+    <p>La description de l'événement 3 sera ici.</p>
+    <button class="close-modal">Fermer</button>
   </div>
 </div>
 
   </div>
 <div id="modal4" class="modal">
   <div class="modal-content">
-    <h3>pas d'événements — Details</h3>
-    <p>event discription will be here event 1.</p>
-    <button class="close-modal">Close</button>
+    <h3>pas d'événements — Détails</h3>
+    <p>La description de l'événement 4 sera ici.</p>
+    <button class="close-modal">Fermer</button>
   </div>
 </div>
 
 
 
 
-  <!-- Slider Buttons -->
-  <button id="slide-left" class="slider-btn">❮</button>
-  <button id="slide-right" class="slider-btn">❯</button>
 </div>
 
 <!-- =========================
@@ -524,7 +757,7 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
       <img src="club.png" alt="Club Logo">
     </div>
 
-    <h2> Fitness & Performance Analyzer</h2>
+    <h2>Analyseur de Fitness et Performance</h2>
     <p>
       Analysez votre condition physique, votre masse musculaire et vos performances
       sportives grâce à notre nouvelle plateforme intelligente.
@@ -544,27 +777,27 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
      
 <h3>reservation terrain de foot ⚽</h3>
 <div class="reserve">
-  <p>To reserve the football field, please fill the form below.</p>
+  <p>Pour réserver le terrain de football, veuillez remplir le formulaire ci-dessous.</p>
   <iframe src="https://calendar.app.google/hKMrFjJmRrgZRji56"></iframe>
 </div>
 
-<h3>Reservation Status</h3>
+<h3>Statut des Réservations</h3>
 <div class="reserve-status">
   <div class="status-card">
-    <h4>Football Field ⚽</h4>
-    <p>Status: <strong>Available</strong></p>
+    <h4>Terrain de Football ⚽</h4>
+    <p>Statut : <strong>Disponible</strong></p>
   </div>
 
   <div class="status-card">
-    <h4>Basketball Court 🏀</h4>
-    <p>Status: <strong>Not available</strong></p>
-    <p>Expected availability: TBD</p>
+    <h4>Terrain de Basketball 🏀</h4>
+    <p>Statut : <strong>Non disponible</strong></p>
+    <p>Disponibilité prévue : À déterminer</p>
   </div>
 
   <div class="status-card">
-    <h4>Volleyball Court 🏐</h4>
-    <p>Status: <strong>Not available</strong></p>
-    <p>Expected availability: TBD</p>
+    <h4>Terrain de Volleyball 🏐</h4>
+    <p>Statut : <strong>Non disponible</strong></p>
+    <p>Disponibilité prévue : À déterminer</p>
   </div>
 </div>
 
@@ -573,9 +806,9 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
      ========================= -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h3>Event Name 1 — Details</h3>
-    <p>More details about Event 1 here.</p>
-    <button class="close-modal">Close</button>
+    <h3>Événement 1 — Détails</h3>
+    <p>Plus de détails sur l'Événement 1 ici.</p>
+    <button class="close-modal">Fermer</button>
   </div>
 </div>
 </main>
@@ -598,59 +831,212 @@ p{color:#375b7a;max-width:900px;line-height:1.6;margin:auto;}
 
 <script>
 /* =========================
-   SLIDER JS
+   DISABLE ZOOM
    ========================= */
-const track=document.getElementById('event-track'),
-      leftBtn=document.getElementById('slide-left'),
-      rightBtn=document.getElementById('slide-right'); 
-let position=0;
+// Prevent pinch zoom on mobile
+document.addEventListener('touchmove', (e) => {
+  if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, { passive: false });
 
-function updateSliderButtons(){
-  const maxScroll=track.scrollWidth-track.parentElement.offsetWidth;
-  leftBtn.style.display=position<0?'block':'none';
-  rightBtn.style.display=Math.abs(position)<maxScroll?'block':'none';
+// Prevent double-tap zoom
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) {
+    e.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
+
+// Prevent keyboard zoom (Ctrl/Cmd + +/-)
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0')) {
+    e.preventDefault();
+  }
+});
+
+/* =========================
+   ENHANCED SLIDER JS
+   ========================= */
+const track = document.getElementById('event-track');
+const slider = document.getElementById('event-slider');
+
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
+let velocity = 0;
+let lastX = 0;
+let lastTime = 0;
+
+function dragStart(e) {
+  isDragging = true;
+  const xPos = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+  startX = xPos - currentX;
+  lastX = xPos;
+  lastTime = Date.now();
+  track.style.transition = 'none';
 }
-leftBtn.onclick=()=>{position=Math.min(position+320,0);track.style.transform=`translateX(${position}px)`;updateSliderButtons();}
-rightBtn.onclick=()=>{const maxScroll=track.scrollWidth-track.parentElement.offsetWidth;position=Math.max(position-320,-maxScroll);track.style.transform=`translateX(${position}px)`;updateSliderButtons();}
-updateSliderButtons();
 
-/* Drag / Swipe support */
-let isDragging=false,startX=0,currentX=0;
-function dragStart(e){isDragging=true; startX=e.type.includes('mouse')?e.pageX-currentX:e.touches[0].pageX-currentX; track.style.transition='none';}
-function dragMove(e){if(!isDragging)return; currentX=e.type.includes('mouse')?e.pageX-startX:e.touches[0].pageX-startX; const maxScroll=track.scrollWidth-track.parentElement.offsetWidth; currentX=Math.min(0,Math.max(currentX,-maxScroll)); track.style.transform=`translateX(${currentX}px)`;}
-function dragEnd(){isDragging=false; position=currentX; track.style.transition='transform .45s ease'; updateSliderButtons();}
-track.addEventListener('mousedown',dragStart); track.addEventListener('mousemove',dragMove); track.addEventListener('mouseup',dragEnd); track.addEventListener('mouseleave',dragEnd);
-track.addEventListener('touchstart',dragStart); track.addEventListener('touchmove',dragMove); track.addEventListener('touchend',dragEnd);
+function dragMove(e) {
+  if (!isDragging) return;
+  
+  const xPos = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+  currentX = xPos - startX;
+  
+  const maxScroll = track.scrollWidth - slider.offsetWidth;
+  currentX = Math.min(0, Math.max(currentX, -maxScroll));
+  
+  const now = Date.now();
+  const dt = Math.max(16, now - lastTime);
+  velocity = (xPos - lastX) / dt;
+  
+  lastX = xPos;
+  lastTime = now;
+  
+  track.style.transform = `translateX(${currentX}px)`;
+}
+
+function dragEnd() {
+  if (!isDragging) return;
+  isDragging = false;
+  
+  track.style.transition = 'transform 0.4s ease';
+  
+  // Calculate snap position with lower drag threshold and velocity (flick) support
+  const cardWidth = track.querySelector('.event-card').offsetWidth + 14;
+  const maxScroll = track.scrollWidth - slider.offsetWidth;
+
+  // Sensitivity: fraction of card width required to switch (lower = easier to switch)
+  const sensitivity = 0.28; // ~28% of card width
+
+  // Determine index based on position and quick swipe velocity
+  const absPos = Math.abs(currentX);
+  let index = Math.floor(absPos / cardWidth);
+
+  // If dragged past sensitivity threshold, advance to next
+  if ((absPos % cardWidth) / cardWidth > sensitivity) index = Math.ceil(absPos / cardWidth);
+
+  // Use velocity for flick detection (quick swipes)
+  if (Math.abs(velocity) > 0.25) {
+    if (velocity < 0) { // swiped left quickly -> go next
+      index = Math.ceil(absPos / cardWidth);
+    } else { // swiped right quickly -> go previous
+      index = Math.floor(absPos / cardWidth);
+    }
+  }
+
+  const snapPosition = -Math.min(index * cardWidth, maxScroll);
+  currentX = Math.max(-maxScroll, Math.min(snapPosition, 0));
+
+  track.style.transform = `translateX(${currentX}px)`;
+}
+
+// Event listeners
+track.addEventListener('mousedown', dragStart);
+document.addEventListener('mousemove', dragMove);
+document.addEventListener('mouseup', dragEnd);
+track.addEventListener('mouseleave', dragEnd);
+
+track.addEventListener('touchstart', dragStart);
+document.addEventListener('touchmove', dragMove, { passive: true });
+document.addEventListener('touchend', dragEnd);
+
+// Prevent text selection during drag
+track.addEventListener('selectstart', (e) => {
+  if (isDragging) e.preventDefault();
+});
 
 /* =========================
    MODALS JS
    ========================= */
-const modals=document.querySelectorAll('.modal');
-document.querySelectorAll('.open-modal').forEach(btn=>{btn.addEventListener('click',()=>document.getElementById(btn.dataset.target).style.display='flex');});
-document.querySelectorAll('.close-modal').forEach(btn=>{btn.addEventListener('click',()=>btn.closest('.modal').style.display='none');});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')modals.forEach(m=>m.style.display='none');});
-modals.forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.style.display='none';}));
+const modals = document.querySelectorAll('.modal');
+
+document.querySelectorAll('.open-modal').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = btn.dataset.target;
+    const modal = document.getElementById(targetId);
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  });
+});
+
+document.querySelectorAll('.close-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.modal').style.display = 'none';
+    document.body.style.overflow = '';
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    modals.forEach(m => {
+      m.style.display = 'none';
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+modals.forEach(m => {
+  m.addEventListener('click', (e) => {
+    if (e.target === m) {
+      m.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+});
 
 /* =========================
    AUTOMATIC PAST EVENT MARKING
    ========================= */
-function markPastEvents(){
-  const today=new Date();
-  document.querySelectorAll('.event-card').forEach(card=>{
-    const eventDate=new Date(card.dataset.date);
-    eventDate.setDate(eventDate.getDate()+1);
-    if(today>=eventDate){
-      if(!card.querySelector('.status')){
-        const status=document.createElement('div');
-        status.className='status';
-        status.innerText='Ended';
+function markPastEvents() {
+  const today = new Date();
+  document.querySelectorAll('.event-card').forEach(card => {
+    const eventDate = new Date(card.dataset.date);
+    eventDate.setDate(eventDate.getDate() + 1);
+    
+    if (today >= eventDate) {
+      if (!card.querySelector('.status')) {
+        const status = document.createElement('div');
+        status.className = 'status';
+        status.innerText = 'Ended';
         card.appendChild(status);
       }
     }
   });
 }
+
 markPastEvents();
-setInterval(markPastEvents,60*1000);
+setInterval(markPastEvents, 60 * 1000);
+
+/* =========================
+   SCROLL ANIMATIONS
+   ========================= */
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Observe reservation sections
+document.querySelectorAll('.reserve, .reserve-status').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'all 0.6s ease-out';
+  observer.observe(el);
+});
 </script>
 
 </body>
